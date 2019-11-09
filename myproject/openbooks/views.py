@@ -4,7 +4,13 @@ from django.utils import timezone
 import json
 
 def home(request):
-    return render(request, 'openbooks_index.html')
+    books_unordered = BookInstance.objects.all()
+    context = {}
+    for book in books_unordered:
+        context[book.id] = math.sqrt(math.pow(book.location_longitude, 2) + math.pow(book.location_latitude, 2))
+    context = { 'books_ordered': sorted(context) }
+    return render(request, 'openbooks_index.html', context)
+
 
 def register(request):
     return render(request, 'register.html')
@@ -29,3 +35,6 @@ def post(request):
         print('경도: ' + str(lonlat['lon'])) # 세로선
         print('위도: ' + str(lonlat['lat'])) # 가로선
     return redirect('home')
+from django.shortcuts import render
+from openbooks.models import BookInstance
+import math

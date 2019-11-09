@@ -30,6 +30,17 @@
         </a>
     </button>
 
+    책 검색 페이지
+
+    <div>
+        {% if books_ordered %}
+            <ul>
+                {% for book in books_ordered %}
+                    <li>({{ book.location_logitude }}, {{ book.location_latitude }})</li>
+            </ul>
+        {% endif %}
+    </div>
+    
     <br/><br/>
     <h1>책 A</h1>
     <h1>책 B</h1>
