@@ -12,37 +12,53 @@
 {% endblock %}
 
 {% block content %}
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
 <div onload="initTmap()">
     <div class = "container">
-        <h1 style="color : cornflowerblue">도서 등록</h1><br>
+        <h1 style="color : white;text-align:center;font-family: 'Do Hyeon', sans-serif;font-size:35px;">도서 등록</h1><br>
+        <br>
+        <div style="text-align: center;">--------------------------</div>
+        
         <form action = "{% url 'openbooks:create' %}" method="POST">
             {% csrf_token %}
-            <h4>제목</h4>
+            <div style="color : white;text-align:center;font-family: 'Do Hyeon', sans-serif;font-size:35px;">
+            제목
             <input type = "text" name = "title">
             <br>
             <br>
-            <h4>상태</h4>
-            <textarea cols = 40 rows = 2 name = "summary"></textarea>
+            상태
+            <textarea cols = 20 rows = 2 name = "summary"></textarea>
             <br>
             <br>
-            <h4>기부 여부</h4>
+            기부 여부
+            <br>
+            <div style="font-size:20px">
             <input type="radio" name="rent_availability" value="True">기부
             <input type="radio" name="donate_availability" value="True">빌려줌
+        </div>
             <br>
-            <br>
-            <h4>위치 지정</h4>
+            위치 지정
             <p id="result"></p>
             <div>
                 <div id="map_div">
                 </div>        
             </div>
+        </div>
+        <br>
+        <div style="text-align:center">
             <input class = "btn btn-dark" type = "submit" value = "등록하기">  
+
+        </div>
         </form>
     </div>
 
     <br>
     <br>
-    <h2>내가 등록한 책들</h2>
+    <div style="text-align: center;">--------------------------</div>
+    <br>
+    <br>
+    <div style="color : white;text-align:center;font-family: 'Do Hyeon', sans-serif;font-size:35px;">
+    내가 등록한 책들
     
     {% for book in books %}
 
@@ -59,6 +75,7 @@
     </div>
     
     {% endfor %}
+</div>
 </div>
 
 {% endblock content %}

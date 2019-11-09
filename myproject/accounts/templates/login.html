@@ -20,15 +20,15 @@
                 {%csrf_token%}
             
                 <h4 class="login">아이디:</h4>
-                <input class="input" name="username" type="text">
+                <input class="login-input" name="username" type="text">
                 <br>
                 <br>
             
                 <h4 class="login">비밀번호:</h4>
-                <input class="input" name="password" type="password">
+                <input class="login-input" name="password" type="password">
                 <br>
                 <br>
-                <input class="submitbutton" type="submit" value="Login!">
+                <input class="login-submitbutton" type="submit" value="Login!">
                 
                 
                 <a href="{% url 'home' %}" style="font-size:25px;">

@@ -10,7 +10,7 @@ def signup(request):
         if request.POST['password1'] == request.POST['password2']:
             user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
             auth.login(request, user)
-            return redirect('accounts:index')
+            return redirect('openbooks:home')
 
     return render(request,'signup.html')
     
@@ -24,7 +24,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('accounts:index')
+            return redirect('openbooks:home')
         else:
             return render(request, 'login.html', {'error':'아이디 혹은 비밀번호가 맞지 않습니다.'})
     else:

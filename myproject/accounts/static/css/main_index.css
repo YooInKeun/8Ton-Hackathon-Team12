@@ -1,0 +1,48 @@
+.title{
+    color:red;
+}
+
+.index_background{
+
+    /* min-height: 100%;
+    background-image: url(../img/index_background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-color:rgba(0,0,0,0.5); */
+}
+body{
+
+    
+    background-image: url(../img/index_background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-color:rgba(0,0,0,0.3) !important;
+}
+
+.developers{
+    margin-top:600px;
+    color:white;
+}
+
+.main-saying{
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 36px;
+    font-family: 'Do Hyeon', sans-serif;
+    
+    color: white;
+    top: 86px;
+}
+.main-description{
+    color: black;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Do Hyeon', sans-serif;
+    position: relative;
+    top: 144px;
+    
+}

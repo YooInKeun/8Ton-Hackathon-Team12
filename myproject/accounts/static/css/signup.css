@@ -1,10 +1,10 @@
-
 .signup-background{
     min-height: 100vh;
-    background-image: linear-gradient(to left bottom, yellow, red);
+    background-image: url(../img/signup_background.jpg);
+    background-color: rgba(0,0,0,0.5);
+    background-blend-mode: multiply;
 }
-.welcome{
-    color: white;
+.welcome{color: white;
     font-family: 'Noto Sans', sans-serif;
     display: block;
     text-align: center;
@@ -20,4 +20,16 @@
     display: block;
     margin: 0 auto;
     color:white;
+}
+
+.signup_submitbutton{
+    display: block;
+    color: white;
+    margin: 0 auto;
+    font-family: 'Noto Sans', sans-serif;
+    background-color: rgba(0,0,0,0);
+    border-width: 3px;
+    border-color: #a56955;
+    border-radius: 10px;
+    margin-top: 50px;
 }

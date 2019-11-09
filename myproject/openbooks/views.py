@@ -18,13 +18,13 @@ def home(request):
             + math.pow(math.fabs(book.location_latitude) - local_lat, 2)
         )
     books_tobesorted = sorted(books_tobesorted.items(), key=operator.itemgetter(1))
-    book_context = BookInstance.objects.filter(book__title="fuck you")
+    book_context = {}
     context = {}
-    # print(books_tobesorted)
-    for books_UID in books_tobesorted:
-        bookinstance = BookInstance.objects.filter(id=books_UID[0])
-        book_context |= bookinstance
-    context['ordered_books'] = book_context.values()
+    for idx, books_UID in enumerate(books_tobesorted):
+        bookinstance = BookInstance.objects.get(id=books_UID[0])
+        book_context[idx] = bookinstance
+    book_context = list(book_context.values())
+    context['ordered_books'] = book_context
     return render(request, 'openbooks_index.html', context)
 
 

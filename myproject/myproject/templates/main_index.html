@@ -4,6 +4,26 @@
 
 {% block extra-style %}
 <style>
+.main-saying{
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Do Hyeon', sans-serif;
+    
+    color: white;
+    top: 86px;
+}
+.main-description{
+    color: black;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Do Hyeon', sans-serif;
+    position: relative;
+    top: 144px;
+    
+}
 </style>
 {% endblock extra-style %}
 
@@ -12,17 +32,69 @@
 {% endblock %}
 
 {% block content %}
+
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static main_index.css %}">
 <br/>
-<h1>첫 메인 페이지</h1>
 <br/>
-<a class="navbar-brand" href="{% url 'openbooks:home' %}" style="font-size:25px;">
-    <button type="button" class="btn">
-        책 빌리러 가기(클릭)
-    </button>
-</a>
+
+
+<h2 class="main-saying">아직도 책을 돈 주고 사니?</h2>
+<h2 class="main-saying">돈 안아깝니?</h2>
+<h2 class="main-saying">이젠 빌려.</h2>
+<p class="main-description">저희 서비스는 책을 빌려주는 사람과 빌리는 사람 중간에서 중개자 역할을 하는 플랫폼입니다.
+    서비스를 이용하여 유익하고 경제적인 독서생활과 좋은 기회들을 만나보세요! 
+</p>
+
+<div>
+        <div style="text-align:center;position: relative;top:185px">
+                <a class="btn btn-default btn-sm" href="{% url 'openbooks:home' %}" style="font-size:25px;">
+                    <button type="button" class="alert alert-light">
+                        <h3 style="color:black">이용하기</h3>
+                    </button>
+                </a>
+                </div>
+</div>
+
 {% endblock content %}
 
 {% block footer %}
+<footer class="bg-dark text-light py-5" style="
+margin-top: 311px;
+height: 200px;
+">
+    <div class="container py-5" style="
+    position: relative;
+    bottom: 77px;
+">
+        <div class="row">
+            <div class="col-6 col-md-6 col-lg-3 mb-2">
+                <h5 class="text-uppercase">More about</h5>
+                <ul class="nav flex-column">
+                    <li><strong><a class="text-white" target="ext" rel="nofollow" href="https://github.com/YooInKeun/8Ton-Hackathon-Team12"
+                            title="CAU CSE Homepage">Project Git Repository</a></strong></li>
+                    <li><p class="text-white" target="ext" rel="nofollow"
+                            
+                            title="Hands_On_Team3 Team Github">8Ton-Hackathon-Team12</a></li>
+                   
+                </ul>
+            </div>
+            <div class="col-6 col-md-6 col-lg-3 mb-2">
+                <h5 class="text-uppercase">Developers</h5>
+                <ul class="nav flex-column">
+                    <li><a class="text-white" target="_new" href="https://github.com/GwonTaekJoon">권택준</a></li>
+                    <li><a class="text-white" target="_new" href="https://github.com/YooInKeun">유인근</a></li>
+                    <li><a class="text-white" target="_new" href="https://github.com/MarkusOh">오승섭</a></li>
+                    
+                </ul>
+            </div>
+            <div class="col-12 col-md-12 col-lg-6 mb-2 text-right">
+                
+            </div>
+        </div>
+    </div>
+</footer>
+
 {% endblock footer %}
 
 {% block extra-script %}

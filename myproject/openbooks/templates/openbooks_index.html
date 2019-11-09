@@ -12,34 +12,57 @@
 {% endblock %}
 
 {% block content %}
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
 <div>
-    <h3>당신과 가까운 책을 확인하세요!</h3>
+    <div style="text-align: center;">
+    <h2 style="color:aliceblue">당신 곁에 있는 책을 확인하세요</h2>
+    </div>
+    <div style="text-align: center;">
     <select>
-        <option value="도서명">도서명</option>
-        <option value="저자명">저자명</option>
+            <option value="도서명">도서명</option>
+            <option value="저자명">저자명</option>
     </select>
-    <input>
+    
+    &nbsp;
+    <input type="text" size="19">
+    &nbsp;
     <a class="navbar-brand" href="#" style="font-size:25px;">
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-success">
             검색하기
         </button>
     </a>
-    <button type="button" class="btn">
+</div>
+    </div>
+    <br>
+    <div style="text-align: center;">
+        
         <a href="{% url 'openbooks:register' %}" style="font-size:25px;">
-            <h2>책 등록하기</h2>
+                <h3 style="color:black;font-weight: bold;">도서 등록하기 <img src="{% static 'img/plus.png' %}" width="30px" height="30px"></h3>
         </a>
-    </button>
-
-    책 검색 페이지
-    <br/><br/>
+    </div>
+    <br/>
     {% for book in ordered_books %}
-        <h1 style = "color:cornflowerblue">책 고유 Code: {{book.id}}</h1>
-        <p>제목: {{book.book}}</p>
+    <div style="background-color:white;border-radius: 20px;">
+        <br>
+        <div style="font-size:16px;font-family: 'Do Hyeon', sans-serif;" class="">
+        <p style = "color:black">책 고유 Code: {{book.id}}</p>
+        <p>제목: {{book.book.title}}</p>
         <p>상태: {{book.summary}}</p>
-        <p>대출 가능 여부:{{book.rent_availability}}</p>
-        <p>기부 가능 여부:{{book.donate_availability}}</p>
-        <!-- <p>대출 가능 여부:{{book.rent_availability}}</p> -->
+        {% ifequal book.rent_availability True %}
+            <p style="color:cornflowerblue">대출 가능</p>
+        {% endifequal %}
+        {% ifequal book.rent_availability False %}
+            <p style="color:red">대출 불가</p>
+        {% endifequal %}
+        {% ifequal book.donate_availability True %}
+        <p style="color:cornflowerblue">기부 받기 가능</p>
+        {% endifequal %}
+        {% ifequal book.donate_availability False %}
+            <p style="color:red">기부 받기 불가</p>
+        {% endifequal %}
         <hr>
+        </div>
+    </div>
     {% endfor %}
 </div>
 
