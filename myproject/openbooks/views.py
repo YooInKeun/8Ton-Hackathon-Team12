@@ -3,24 +3,28 @@ from .models import *
 from django.utils import timezone
 import json
 import math
-
+import operator
 
 def home(request):
 
     if(request.method == 'GET'):
-        local_long = request.GET['longitude']
-        local_lat = request.GET['latitude']
-    books_unordered = BookInstance.objects.all()
+        local_long = 127.15568423
+        local_lat = 38.56198156
+    books_unordered = BookInstance.objects.all()[:10]
     books_tobesorted = {}
     for book in books_unordered:
         books_tobesorted[book.id] = math.sqrt(
             math.pow(math.fabs(book.location_longitude) - local_long, 2)
             + math.pow(math.fabs(book.location_latitude) - local_lat, 2)
         )
-    books_tobesorted = sorted(books_tobesorted)
+    books_tobesorted = sorted(books_tobesorted.items(), key=operator.itemgetter(1))
+    book_context = BookInstance.objects.filter(book__title="fuck you")
     context = {}
+    # print(books_tobesorted)
     for books_UID in books_tobesorted:
-        context['books_sorted'] = get_object_or_404(BookInstance, id=books_UID)
+        bookinstance = BookInstance.objects.filter(id=books_UID[0])
+        book_context |= bookinstance
+    context['ordered_books'] = book_context.values()
     return render(request, 'openbooks_index.html', context)
 
 
@@ -30,12 +34,16 @@ def register(request):
 def create(request):
 
     bookinstance = BookInstance()
-    bookinstance.book = Book.objects.get(title=request.POST.get('book'))
+    bookinstance.book = Book.objects.get(title=request.POST.get('title'))
     bookinstance.summary = request.POST.get('summary')
-    bookinstance.rent_availability = request.POST.get('rent_availability')
-    bookinstance.donate_availability = reques.POST.get('donate_availability')
-    bookinstance.location_longitude = request.POST.get('location_longitude')
-    bookinstance.location_latitude = request.POST.get('location_latitude')
+    if request.POST.get('rent_availability') == 'True':
+        bookinstance.rent_availability = True
+        bookinstance.donate_availability = False
+    elif request.POST.get('donate_availability') == 'True':
+        bookinstance.rent_availability = False
+        bookinstance.donate_availability = True
+    bookinstance.location_longitude = 127.48590468
+    bookinstance.location_latitude = 38.15485658
     bookinstance.save()
     books = BookInstance.objects.all()
     

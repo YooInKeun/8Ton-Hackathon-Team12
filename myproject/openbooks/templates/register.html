@@ -15,7 +15,8 @@
 <div onload="initTmap()">
     <div class = "container">
         <h1 style="color : cornflowerblue">도서 등록</h1><br>
-        <form action = "{% url 'openbooks:create' %}">
+        <form action = "{% url 'openbooks:create' %}" method="POST">
+            {% csrf_token %}
             <h4>제목</h4>
             <input type = "text" name = "title">
             <br>
@@ -25,12 +26,12 @@
             <br>
             <br>
             <h4>기부 여부</h4>
-            <input type="radio" name="availability" value="True">기부
-            <input type="radio" name="availability" value="True">빌려줌
+            <input type="radio" name="rent_availability" value="True">기부
+            <input type="radio" name="donate_availability" value="True">빌려줌
             <br>
             <br>
             <h4>위치 지정</h4>
-            <p id="result">ㅇㅇ</p>
+            <p id="result"></p>
             <div>
                 <div id="map_div">
                 </div>        
@@ -49,7 +50,7 @@
                 margin-left : 30px ; margin-top:10px; padding:25px">
     
     <h1 style = "color:cornflowerblue">책 고유 Code: {{book.id}}</h1>
-    <p>제목: {{book.book}}}</p>
+    <p>제목: {{book.book.title}}</p>
     <p>상태: {{book.summary}}</p>
     <p>빌려줬는지:{{book.rent_availability}}</p>
     <p>기부했는지:{{book.donate_availability}}</p>

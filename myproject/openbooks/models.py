@@ -51,7 +51,7 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
 
     # 한 작가는 여러 책을 쓸 수 있되, 한 책은 여러 작가를 가질 수 없습니다.
-    author = models.ManyToManyField(Author)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
 
     isbn = models.CharField(
         'ISBN',

@@ -32,15 +32,15 @@
 
     책 검색 페이지
     <br/><br/>
-    <h1>책 A</h1>
-    <h1>책 B</h1>
-    <h1>책 C</h1>
-    <h1>책 D</h1>
-    <h1>책 E</h1>
-    <h1>책 F</h1>
-    <h1>책 G</h1>
-    <h1>책 H</h1>
-    <h1>책 I</h1>
+    {% for book in ordered_books %}
+        <h1 style = "color:cornflowerblue">책 고유 Code: {{book.id}}</h1>
+        <p>제목: {{book.book}}</p>
+        <p>상태: {{book.summary}}</p>
+        <p>대출 가능 여부:{{book.rent_availability}}</p>
+        <p>기부 가능 여부:{{book.donate_availability}}</p>
+        <!-- <p>대출 가능 여부:{{book.rent_availability}}</p> -->
+        <hr>
+    {% endfor %}
 </div>
 
 {% endblock content %}
