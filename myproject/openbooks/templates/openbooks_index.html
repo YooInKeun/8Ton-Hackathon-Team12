@@ -18,26 +18,24 @@
     <h2 style="color:aliceblue">당신 곁에 있는 책을 확인하세요</h2>
     </div>
     <div style="text-align: center;">
-    <select>
+    <form action="{% url 'openbooks:home' %}">
+    <select name='category'>
             <option value="도서명">도서명</option>
             <option value="저자명">저자명</option>
     </select>
     
+    
+    <input name="content" type="text" size="18">
     &nbsp;
-    <input type="text" size="19">
-    &nbsp;
-    <a class="navbar-brand" href="#" style="font-size:25px;">
-        <button type="button" class="btn btn-success">
-            검색하기
-        </button>
-    </a>
+            <input class = "btn btn-success" type = "submit" value = "검색하기">
+    </form>
 </div>
     </div>
     <br>
     <div style="text-align: center;">
         
         <a href="{% url 'openbooks:register' %}" style="font-size:25px;">
-                <h3 style="color:black;font-weight: bold;">도서 등록하기 <img src="{% static 'img/plus.png' %}" width="30px" height="30px"></h3>
+                <h3 style="color:black;font-weight: bold;">도서 등록하기 <img src="{% static 'img/icons8-plus-64.png' %}" width="30px" height="30px"></h3>
         </a>
     </div>
     <br/>
@@ -47,7 +45,10 @@
         <div style="font-size:16px;font-family: 'Do Hyeon', sans-serif;" class="">
         <p style = "color:black">책 고유 Code: {{book.id}}</p>
         <p>제목: {{book.book.title}}</p>
+        <p>저자: {{book.book.author}}</p>
         <p>상태: {{book.summary}}</p>
+        <p>위도: {{book.location_latitude}}</p>
+        <p>경도: {{book.location_longitude}}</p>
         {% ifequal book.rent_availability True %}
             <p style="color:cornflowerblue">대출 가능</p>
         {% endifequal %}

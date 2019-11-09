@@ -6,11 +6,20 @@ import math
 import operator
 
 def home(request):
+    local_long =0
+    local_lat=0
+    if request.GET.get('content') != None:
+        if request.GET['category'] == '도서명':
+            books_unordered = BookInstance.objects.filter(book=Book.objects.get(title__icontains=request.GET.get('content')))[:10]
+        elif request.GET['category'] == '저자명':
+            books_unordered = BookInstance.objects.filter(book=Book.objects.get(author=Author.objects.get(last_name__icontains=request.GET.get('content'))))[:10]
+    else:
+        print(1)
+        if(request.method == 'GET'):
+            local_long = 127.15568423
+            local_lat = 38.56198156
+        books_unordered = BookInstance.objects.all()[:10]
 
-    if(request.method == 'GET'):
-        local_long = 127.15568423
-        local_lat = 38.56198156
-    books_unordered = BookInstance.objects.all()[:10]
     books_tobesorted = {}
     for book in books_unordered:
         books_tobesorted[book.id] = math.sqrt(

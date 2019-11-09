@@ -10,7 +10,7 @@
 {% block navbar %}
 <nav class="navbar navbar-expand-lg">
         <div class="container">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;;
             <div style="text-align: center;" class="nav navbar-nav navbar-center">
             <a class="navbar-brand mx-auto" href="{% url 'home' %}" style="font-size:25px;">
                 <button type="button" class="btn">
@@ -102,9 +102,10 @@
     
     <h1 style = "color:cornflowerblue">책 고유 Code: {{book.id}}</h1>
     <p>제목: {{book.book.title}}</p>
-    <p>상태: {{book.summary}}</p>
-    <p>빌려줬는지:{{book.rent_availability}}</p>
-    <p>기부했는지:{{book.donate_availability}}</p>
+        <p>저자: {{book.book.author}}</p>
+        <p>상태: {{book.summary}}</p>
+        <p>위도: {{book.location_latitude}}</p>
+        <p>경도: {{book.location_longitude}}</p>
     <hr>
     
     </div>
