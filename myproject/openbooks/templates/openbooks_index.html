@@ -1,12 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block extra-style %}
+<style>
+</style>
+{% endblock extra-style %}
+
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div>
+    <h3>당신과 가까운 책을 확인하세요!</h3>
+    <select>
+        <option value="도서명">도서명</option>
+        <option value="저자명">저자명</option>
+    </select>
+    <input>
+    <a class="navbar-brand" href="#" style="font-size:25px;">
+        <button type="button" class="btn btn-primary">
+            검색하기
+        </button>
+    </a>
+    <button type="button" class="btn">
+        <a href="{% url 'openbooks:register' %}" style="font-size:25px;">
+            <h2>책 등록하기</h2>
+        </a>
+    </button>
+
     책 검색 페이지
-</body>
-</html>
+    <br/><br/>
+    <h1>책 A</h1>
+    <h1>책 B</h1>
+    <h1>책 C</h1>
+    <h1>책 D</h1>
+    <h1>책 E</h1>
+    <h1>책 F</h1>
+    <h1>책 G</h1>
+    <h1>책 H</h1>
+    <h1>책 I</h1>
+</div>
+
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}
+
+{% block extra-script %}
+<script>
+    $(function () {
+        $('[data-toggle=tooltip]').tooltip();
+    });
+</script>
+{% endblock extra-script %}
