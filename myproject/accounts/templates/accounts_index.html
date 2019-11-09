@@ -23,6 +23,12 @@
 <a href="{% url 'accounts:login' %}">login</a>
 
 {% endif %}
+
+<a class="navbar-brand" href="{% url 'home' %}" style="font-size:25px;">
+    <button type="button" class="btn">
+        홈으로 가기
+    </button>
+</a>
 {% endblock %}
 
 {% block extra-script %}
