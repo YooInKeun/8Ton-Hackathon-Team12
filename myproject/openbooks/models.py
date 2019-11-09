@@ -114,12 +114,12 @@ class BookInstance(models.Model):
     def isDonationAvailable(self):
         return (self.reserved <= timezone.now() and self.due == None and self.donate_availability == True)
 
-class Message(models.Model):
-    sender = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    receiver = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    contents = models.TextField(max_length=1000)
-    created_on = models.DateTimeField(auto_now_add=True)
-    bookinstance = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+# class Message(models.Model):
+#     sender = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+#     receiver = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+#     contents = models.TextField(max_length=1000)
+#     created_on = models.DateTimeField(auto_now_add=True)
+#     bookinstance = models.ForeignKey(BookInstance, on_delete=models.SET_NULL, null=True)
     
-    def __str__(self):
-        return self.tag_name
+#     def __str__(self):
+#         return self.tag_name
