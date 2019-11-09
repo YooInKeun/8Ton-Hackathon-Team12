@@ -14,7 +14,7 @@
 
 <div class="signup-background">
 <h1 class ="welcome">WELCOME</h1>
-
+<div style="color : white;text-align:center;font-family: 'Do Hyeon', sans-serif;font-size:35px;">
 <form actions="{% url 'accounts:signup' %}" method="POST">
     {%csrf_token%}
 
@@ -42,6 +42,7 @@
         홈으로 가기
     </button>
 </a>
+</div>
 </div>
 {% endblock %}
 
