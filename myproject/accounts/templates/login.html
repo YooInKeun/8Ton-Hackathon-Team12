@@ -1,33 +1,48 @@
 {% extends 'base.html' %}
+{% load static%}
+
 
 {% block title %}
 {% endblock %}
 
 {% block extra-style %}
+
 {% endblock %}
 
+
 {% block content %}
-<form method="POST" actions="{% url 'accounts:login' %}">
-    {%csrf_token%}
+<link rel="stylesheet" href="{% static login.css %}">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
 
-    Username:
-    <input name="username" type="text">
-    <br>
-    <br>
+        <div class="login-background">
+       
+        <form method="POST" actions="{% url 'accounts:login' %}">
+                {%csrf_token%}
+            
+                <h4 class="login">아이디:</h4>
+                <input class="input" name="username" type="text">
+                <br>
+                <br>
+            
+                <h4 class="login">비밀번호:</h4>
+                <input class="input" name="password" type="password">
+                <br>
+                <br>
+                <input class="submitbutton" type="submit" value="Login!">
+                
+                
+                <a href="{% url 'home' %}" style="font-size:25px;">
+                    <button type="button" class="GoToHome">
+                        홈으로 가기
+                    </button>
+                </a>
+            </form>
+   
+</div>
 
-    Password:
-    <input name="password" type="password">
-    <br>
-    <br>
-    <input type="submit" value="Login!">
-    
-    
-    <a class="navbar-brand" href="{% url 'home' %}" style="font-size:25px;">
-        <button type="button" class="btn">
-            홈으로 가기
-        </button>
-    </a>
-</form>
+
+
+
 {% endblock %}
 
 {% block extra-script %}
