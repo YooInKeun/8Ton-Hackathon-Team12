@@ -9,7 +9,7 @@
 <body>
 
 
-        <form actions="{% url 'login' %}">
+        <form method="POST" actions="{% url 'accounts:login' %}">
                 {%csrf_token%}
             
                 Username:
@@ -18,7 +18,7 @@
                 <br>
             
                 Password:
-                <input name="password1" type="password">
+                <input name="password" type="password">
                 <br>
                 <br>
                 <input type="submit" value="Login!">
