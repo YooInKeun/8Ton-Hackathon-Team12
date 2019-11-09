@@ -8,5 +8,14 @@
 </head>
 <body>
     책 검색 페이지
+
+    <div>
+        {% if books_ordered %}
+            <ul>
+                {% for book in books_ordered %}
+                    <li>({{ book.location_logitude }}, {{ book.location_latitude }})</li>
+            </ul>
+        {% endif %}
+    </div>
 </body>
 </html>
