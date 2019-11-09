@@ -10,6 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{% block title %}프로젝트 제목{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../static/css/signup.css">
+    <link rel="stylesheet" href="../../static/css/login.css?ver=0.6">
 
     <!-- <link rel="stylesheet" href="../../static/css/default.css?ver=0.7"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -22,6 +26,20 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>simpleMap</title>
+    <script src="https://apis.openapi.sk.com/tmap/js?version=1&format=javascript&appKey=25b2aaf5-3168-4b66-afbe-732bc6568077"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        axios.defaults.xsrfCookieName = "csrftoken";
+        axios.defaults.xsrfHeaderName = "X-CSRFToken";
+    </script>
 </head>
 
 <body>

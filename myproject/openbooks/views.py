@@ -2,15 +2,26 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from django.utils import timezone
 import json
+import math
+
 
 def home(request):
-    # books_unordered = BookInstance.objects.all()
-    # context = {}
-    # for book in books_unordered:
-    #     context[book.id] = math.sqrt(math.pow(book.location_longitude, 2) + math.pow(book.location_latitude, 2))
-    # context = { 'books_ordered': sorted(context) }
-    # , context)
-    return render(request, 'openbooks_index.html')
+
+    if(request.method == 'GET'):
+        local_long = request.GET['longitude']
+        local_lat = request.GET['latitude']
+    books_unordered = BookInstance.objects.all()
+    books_tobesorted = {}
+    for book in books_unordered:
+        books_tobesorted[book.id] = math.sqrt(
+            math.pow(math.fabs(book.location_longitude) - local_long, 2)
+            + math.pow(math.fabs(book.location_latitude) - local_lat, 2)
+        )
+    books_tobesorted = sorted(books_tobesorted)
+    context = {}
+    for books_UID in books_tobesorted:
+        context['books_sorted'] = get_object_or_404(BookInstance, id=books_UID)
+    return render(request, 'openbooks_index.html', context)
 
 
 def register(request):
@@ -36,6 +47,3 @@ def post(request):
         print('경도: ' + str(lonlat['lon'])) # 세로선
         print('위도: ' + str(lonlat['lat'])) # 가로선
     return redirect('home')
-from django.shortcuts import render
-from openbooks.models import BookInstance
-import math

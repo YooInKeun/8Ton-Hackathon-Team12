@@ -1,0 +1,23 @@
+
+.signup-background{
+    min-height: 100vh;
+    background-image: linear-gradient(to left bottom, yellow, red);
+}
+.welcome{
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+    display: block;
+    text-align: center;
+
+
+}
+
+.signup_notice{
+    color:white;
+}
+
+.GoToHome-signup{
+    display: block;
+    margin: 0 auto;
+    color:white;
+}
