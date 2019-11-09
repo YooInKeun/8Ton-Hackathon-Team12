@@ -21,6 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', views.home, name='home'),
-    path('openbooks', include('openbooks.urls')),
+    path('openbooks/', include('openbooks.urls')),
     path('accounts/', include('accounts.urls')),
 ]
