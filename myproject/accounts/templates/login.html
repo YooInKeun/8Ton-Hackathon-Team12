@@ -1,31 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
+{% block title %}
+{% endblock %}
 
-        <form method="POST" actions="{% url 'accounts:login' %}">
-                {%csrf_token%}
-            
-                Username:
-                <input name="username" type="text">
-                <br>
-                <br>
-            
-                Password:
-                <input name="password" type="password">
-                <br>
-                <br>
-                <input type="submit" value="Login!">
-                
-                
-            
-            </form>
+{% block extra-style %}
+{% endblock %}
+
+{% block content %}
+<form method="POST" actions="{% url 'accounts:login' %}">
+    {%csrf_token%}
+
+    Username:
+    <input name="username" type="text">
+    <br>
+    <br>
+
+    Password:
+    <input name="password" type="password">
+    <br>
+    <br>
+    <input type="submit" value="Login!">
     
-</body>
-</html>
+    
+
+</form>
+{% endblock %}
+
+{% block extra-script %}
+{% endblock %}

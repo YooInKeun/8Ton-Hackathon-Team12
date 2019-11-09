@@ -1,30 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
+{% block title %}
+{% endblock %}
 
-    <h1>login test</h1>
+{% block extra-style %}
+{% endblock %}
+
+{% block content %}
+<h1>login test</h1>
 
     
-    <a href="{% url 'accounts:signup' %}">signup</a>
+<a href="{% url 'accounts:signup' %}">signup</a>
 
-    {% if user.is_authenticated %}
-        <p>{{user.username}}님! 환영합니다.</p>
-        <a href="{% url 'accounts:logout' %}">logout</a>
-            
-            
+{% if user.is_authenticated %}
+    <p>{{user.username}}님! 환영합니다.</p>
+    <a href="{% url 'accounts:logout' %}">logout</a>
         
+        
+    
 
-    {% else %}
-    <a href="{% url 'accounts:login' %}">login</a>
+{% else %}
+<a href="{% url 'accounts:login' %}">login</a>
 
-    {% endif %}
+{% endif %}
+{% endblock %}
 
-</body>
-</html>
+{% block extra-script %}
+{% endblock %}
