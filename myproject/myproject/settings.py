@@ -25,7 +25,11 @@ SECRET_KEY = '=@@53)ex6qsodieu8&j%5vmd-d@@r^or(4d)&0qkwj0xbatvc-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8ton-team12.niyuwmqwjv.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = [
+    '8ton-team12.niyuwmqwjv.us-west-2.elasticbeanstalk.com',
+    '127.0.0.1'
+
+]
 # '8ton-team12.niyuwmqwjv.us-west-2.elasticbeanstalk.com'
 
 # Application definition
@@ -39,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'openbooks.apps.OpenbooksConfig',
     'accounts.apps.AccountsConfig',
+    'test_app'
 ]
 
 MIDDLEWARE = [

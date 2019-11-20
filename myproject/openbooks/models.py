@@ -17,7 +17,7 @@ class Author(models.Model):
     date_of_death = models.DateField('Died', null=True, blank=True)
     class Meta:
         ordering = ['last_name', 'first_name']
-    
+
     """
     def get_absolute_url(self):
         return reverse('author-detail', args=[str(self.id)])
@@ -50,8 +50,8 @@ class Book(models.Model):
     """책을 표현하는 모델입니다"""
     title = models.CharField(max_length=200)
 
-    # 한 작가는 여러 책을 쓸 수 있되, 한 책은 여러 작가를 가질 수 없습니다.
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    # 한 작가는 여러 책을 쓸 수 있으며, 한 책은 여러 작가를 가질 수 있습니다.
+    author = models.ManyToManyField(Author, related_name='books')
 
     isbn = models.CharField(
         'ISBN',
@@ -127,7 +127,6 @@ class Message(models.Model):
     contents = models.TextField(max_length=1000)
     created_on = models.DateTimeField(auto_now_add=True)
     bookinstance = models.ForeignKey(BookInstance, on_delete=models.SET_NULL, null=True)
-    
+
     def __str__(self):
         return 'FROM: ' + str(self.sender) + '/ TO: ' + str(self.receiver)
-
